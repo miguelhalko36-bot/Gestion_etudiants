@@ -1,34 +1,144 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #2c3e50;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+}
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 40px 20px;
 }
 .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    width: 400px;
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
-h1 { text-align: center; color: #333; }
-.form-group { margin-bottom: 15px; }
-label { display: block; margin-bottom: 5px; }
+h2 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+}
+/* Formulaire stylisé (Centré et propre) */
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    background: #fdfdfd;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
 input, select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+input:focus, select:focus {
+    border-color: var(--primary-color);
+}
+/* Pour que le select et le bouton prennent toute la largeur sur la grille */
+select, button[name="ajouter"], button[name="modifier"] {
+    grid-column: span 2;
 }
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
+    padding: 14px;
+    background-color: var(--success-color);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: transform 0.1s, background 0.3s;
 }
-button:hover { background-color: #218838; }
+button:hover {
+    background-color: #219150;
+    transform: translateY(-1px);
+}
+/* Tableau (Lisible, bien espacé, structuré) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th {
+    background-color: var(--secondary-color);
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 15px;
+    text-align: left;
+}
+td {
+    padding: 15px;
+    border-bottom: 1px solid #edf2f7;
+}
+tr:hover {
+    background-color: #f9fbff;
+}
+/* Actions */
+.btn-edit {
+    color: var(--warning-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 2px 5px;
+    border: 1px solid var(--warning-color);
+    border-radius: 2px;
+    margin-right: 2px;
+    transition: all 0.3s;
+}
+.btn-edit:hover {
+    background: var(--warning-color);
+    color: white;
+}
+.btn-delete {
+    color: var(--danger-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1px 2px;
+    border: 1px solid var(--danger-color);
+    border-radius: 1px;
+    transition: all 0.3s;
+}
+.btn-delete:hover {
+    background: var(--danger-color);
+    color: white;
+}
+/* Validation JS (Style des messages d'erreur) */
+.error-msg {
+    background-color: #fff5f5;
+    color: var(--danger-color);
+    padding: 12px;
+    border-left: 5px solid var(--danger-color);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    display: none;
+}
+/* Responsive */
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+    input, select, button {
+        grid-column: span 1;
+    }
+}
